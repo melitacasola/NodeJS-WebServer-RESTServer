@@ -22,7 +22,7 @@ const UsuarioSchema = Schema({
     rol:{
         type: String,
         required: true,
-        emun: ['ADMIN_ROLE', 'USER_ROLE']
+        emun: ['ADMIN_ROLE', 'USER_ROLE', 'VENTAS_ROL']
     },
     estado:{
         type: Boolean,
@@ -35,7 +35,8 @@ const UsuarioSchema = Schema({
 });
 
 UsuarioSchema.methods.toJSON = function () {
-    const { __v, contraseña, ...usuario} = this.toObject();
+    const { __v, contraseña, _id, ...usuario} = this.toObject();
+    usuario.uid = _id;
     return usuario;
     
 }

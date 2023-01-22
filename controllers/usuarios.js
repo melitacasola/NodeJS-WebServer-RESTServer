@@ -64,11 +64,13 @@ const usuarioPatch = (req, res = response) => {
 const usuarioDelete = async (req, res = response) => {
 
     const {id} = req.params;
+    
     // Fisicame borrar dato
     // const usuario = await Usuario.findByIdAndDelete(id)
 
     // para no perder el dato, voy a cambiar el estado del Usuario
     const usuario = await Usuario.findByIdAndUpdate(id, {estado: false})
+  
     res.json(usuario);
 }
 
